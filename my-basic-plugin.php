@@ -37,17 +37,24 @@ defined ( 'ABSPATH' ) or die( 'Hey, you can\t access this file, you silly' );
 
 class MybasicPlugin {
 
+    function __construct() {
+        add_action('init', array ( $this, 'custom_post_type' ) );
+    }
+
     // activation 
 
     function activate() {
         // generate a CPT
+        $this->custom_post_type();
         // flush rewrite rules
+        flush_rewrite_rules();
     }
 
     // deactivation
 
     function deactivate() {
         // flush rewrite rules
+        flush_rewrite_rules();
     }
 
     // uninstall 
@@ -55,6 +62,10 @@ class MybasicPlugin {
     function uninstall() {
         // delete cpt
         // delete all the plugin data from the DB
+    }
+
+    function custom_post_type() {
+        register_post_type( 'book', ['public' => true, 'label'  => 'Books'] );
     }
 }
 
