@@ -20,13 +20,56 @@
     Domain Path:       /languages
 */
 
-if ( ! defined ('ABSPATH') ) {
-    die;
-}
+// when start plugin use this three on one method secure plugin
+
+// if ( ! defined ('ABSPATH') ) {
+//     die;
+// }
 
 defined ( 'ABSPATH' ) or die( 'Hey, you can\t access this file, you silly' );
 
-if ( ! function_exists('add_action') ){
-    echo 'Hey, you can\t access this file, you silly';
-    exit;
-}  
+// if ( ! function_exists('add_action') ){
+//     echo 'Hey, you can\t access this file, you silly';
+//     exit;
+// }  
+
+// PHP OOP method on plugin development
+
+class MybasicPlugin {
+
+    // activation 
+
+    function activate() {
+        // generate a CPT
+        // flush rewrite rules
+    }
+
+    // deactivation
+
+    function deactivate() {
+        // flush rewrite rules
+    }
+
+    // uninstall 
+
+    function uninstall() {
+        // delete cpt
+        // delete all the plugin data from the DB
+    }
+}
+
+if ( class_exists('MybasicPlugin') ) {
+    $mybasicplugin = new MybasicPlugin();
+}
+
+
+// activation
+
+register_activation_hook( __FILE__, array( $mybasicplugin, 'activate' ) );
+
+// activation
+
+register_deactivation_hook( __FILE__, array( $mybasicplugin, 'deactivate' ) );
+
+// uninstall
+
