@@ -57,13 +57,6 @@ class MybasicPlugin {
         flush_rewrite_rules();
     }
 
-    // uninstall 
-
-    function uninstall() {
-        // delete cpt
-        // delete all the plugin data from the DB
-    }
-
     function custom_post_type() {
         register_post_type( 'book', ['public' => true, 'label'  => 'Books'] );
     }
@@ -82,5 +75,5 @@ register_activation_hook( __FILE__, array( $mybasicplugin, 'activate' ) );
 
 register_deactivation_hook( __FILE__, array( $mybasicplugin, 'deactivate' ) );
 
-// uninstall
+
 
